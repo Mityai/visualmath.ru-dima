@@ -8,8 +8,8 @@ class EditQuestion extends Component {
   }
 
   render() {
-    let {question: {question, answers, isAnswerSymbolic, correctAnswers, images, imagesLeft, imagesScale, imagesTop}, 
-      editQuestionText, editAnswers, editCorrectAnswers, save, editImages, upload, setAnswerSymbolic} = this.props
+    let {question: {question, answers, isAnswerSymbolic, correctAnswers, images, imagesLeft, imagesScale, imagesTop, difficulty},
+      editQuestionText, editAnswers, editCorrectAnswers, editDifficulty, save, editImages, upload, setAnswerSymbolic} = this.props
     let conditionalMultipleChoiceChecked = correctAnswers.length > 1;
     let {userEnabledMultipleChoice} = this.state
 
@@ -20,9 +20,10 @@ class EditQuestion extends Component {
                 placeholder="Формулировка вопроса"
                 label="Вопрос"
                 value={question}
-                onChange={({target: {value}}) =>
-                  editQuestionText(value)
-                }
+                onChange={({target: {value}}) => {
+                  console.log('call editQuestionList');
+                  editQuestionText(value);
+                }}
         />
         <br/>
         <Input type="checkbox"
@@ -99,6 +100,16 @@ class EditQuestion extends Component {
             }/>
           </div>
         )}
+        <Input type="textarea"
+               style={{resize: 'none'}}
+               label="Сложность"
+               value={difficulty}
+               onChange={({target: {value}}) => {
+                 console.log('call editDifficulty');
+                 editDifficulty(value);
+               }}
+        />
+        <br/>
         <button type="button" className="btn btn-primary" onClick={save}>Сохранить</button>
       </div>
     )
@@ -111,6 +122,7 @@ EditQuestion.propTypes = {
   editAnswers: PropTypes.func,
   editCorrectAnswers: PropTypes.func,
   editImages: PropTypes.func.isRequired,
+  editDifficulty: PropTypes.func,
   setAnswerSymbolic: PropTypes.func,
   upload: PropTypes.func.isRequired,
   save: PropTypes.func,

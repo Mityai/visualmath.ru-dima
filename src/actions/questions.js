@@ -29,6 +29,7 @@ export const EDIT_ANSWERS = 'questions/EDIT_ANSWERS'
 export const EDIT_IMAGES = 'questions/EDIT_IMAGES'
 export const EDIT_CORRECT_ANSWERS = 'questions/EDIT_CORRECT_ANSWERS'
 export const EDIT_MULTIPLE = 'questions/EDIT_MULTIPLE'
+export const EDIT_DIFFICULTY = 'questions/EDIT_DIFFICULTY'
 
 export const STATUS_EDITING = 'questions/status/EDITING'
 export const STATUS_EDITING_SUCCESS = 'questions/status/EDITING_SUCCESS'

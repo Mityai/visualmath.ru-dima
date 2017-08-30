@@ -3,7 +3,7 @@ import {access} from '../../utils/access';
 
 export default access(
   'teacher',
-  ({body: {question, answers, correctAnswers, multiple, isAnswerSymbolic}}) => {
+  ({body: {question, answers, correctAnswers, multiple, isAnswerSymbolic, difficulty}}) => {
     if (!question) {
       return Promise.reject('не отправлен вопрос');
     }
@@ -36,12 +36,21 @@ export default access(
       return Promise.reject(`'multiple' должен быть типа boolean`);
     }
 
+    if (isNaN(parseFloat(difficulty)) || !isFinite(difficulty) || difficulty % 1 !== 0) {
+      return Promise.reject(`'difficulty' должен быть целым числом`);
+    }
+
+    if (difficulty <= 0) {
+      return Promise.reject(`'difficulty' должен быть больше нуля`);
+    }
+
     let ques = new Question({
       question,
       multiple,
       answers,
       correctAnswers,
-      isAnswerSymbolic
+      isAnswerSymbolic,
+      difficulty
     });
 
     return ques.save();

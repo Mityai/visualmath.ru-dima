@@ -30,6 +30,7 @@ import {
   EDIT_ANSWERS,
   EDIT_CORRECT_ANSWERS,
   EDIT_MULTIPLE,
+  EDIT_DIFFICULTY,
   STATUS_EDITING,
   // STATUS_EDITING_SUCCESS,
   STATUS_EDITING_FAIL,
@@ -162,7 +163,7 @@ export let handlers = {
     element.imagesLeft = images.imagesLeft
     element.imagesTop = images.imagesTop
     element.imagesScale = images.imagesScale
-    
+
     let list = cloneDeep(state.list)
     list[id] = element
 
@@ -178,6 +179,10 @@ export let handlers = {
 
   [EDIT_MULTIPLE](state, {id, multiple}) {
     return higherOrderEdit(state, id, 'multiple', multiple)
+  },
+
+  [EDIT_DIFFICULTY](state, {id, difficulty}) {
+    return higherOrderEdit(state, id, 'difficulty', difficulty)
   }
 };
 
@@ -186,7 +191,7 @@ export default createReducer(initialState, handlers);
 // ----- ----- ----- -----
 // actions
 
-export function addQuestion({question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic}) {
+export function addQuestion({question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic, difficulty}) {
   return {
     types: [ADD, ADD_SUCCESS, ADD_FAIL],
     promise: client => client.post('/questions/add', {
@@ -200,6 +205,7 @@ export function addQuestion({question, answers, correctAnswers, multiple, images
         imagesTop,
         imagesScale,
         isAnswerSymbolic,
+        difficulty
       }
     })
   };
@@ -249,7 +255,7 @@ export function finish(activeLectureId, activeQuestionId) {
 
 
 export function editQuestion(id, {question, answers,
-  correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic}) {
+  correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic, difficulty}) {
   return {
     types: [EDIT, EDIT_SUCCESS, EDIT_FAIL],
     promise: client => client.post('/questions/edit', {
@@ -263,7 +269,8 @@ export function editQuestion(id, {question, answers,
         imagesLeft,
         imagesTop,
         imagesScale,
-        isAnswerSymbolic
+        isAnswerSymbolic,
+        difficulty
       }
     }),
     id
@@ -306,7 +313,7 @@ export function editCorrectAnswers(id, correctAnswers) {
   return {
     type: EDIT_CORRECT_ANSWERS,
     id,
-    correctAnswers,
+    correctAnswers
   }
 }
 
@@ -315,6 +322,14 @@ export function editMultiple(id, multiple) {
     type: EDIT_MULTIPLE,
     id,
     multiple
+  }
+}
+
+export function editDifficulty(id, difficulty) {
+  return {
+    type: EDIT_DIFFICULTY,
+    id,
+    difficulty
   }
 }
 
