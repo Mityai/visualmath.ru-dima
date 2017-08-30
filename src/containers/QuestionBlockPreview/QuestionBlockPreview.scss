@@ -1,0 +1,22 @@
+.block {
+  position: relative;
+}
+
+
+.edit-button {
+  position: absolute;
+  left: -20px;
+  top: 12px;
+
+  @media screen and (max-width: 700px) {
+    position: inherit;
+    padding-bottom: 20px;
+    left: 3px;
+  }
+}
+
+
+.blockErrors {
+  background-color: pink;
+  border: 1px solid red;
+}

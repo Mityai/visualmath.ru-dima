@@ -1,0 +1,11 @@
+.idea/
+*.iml
+npm-debug.log
+api/secret.js
+*.sw?
+.DS_Store
+node_modules
+static/dist
+webpack-assets.json
+static_data
+.vscode

@@ -1,0 +1,41 @@
+.ongoingLectures {
+  margin-top: 6px;
+  border-radius: 3px;
+  // background-color: #e2e4e6;
+  .header {
+    padding: 8px 34px 8px 10px;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+  }
+  .item {
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.customTable {
+  border-collapse: separate;
+  border-spacing: 0 5px; /* this is the ultimate fix */
+
+  thead > tr > th {
+    border-bottom: none;
+    padding: 5px 15px;
+  }
+
+  tbody {
+    tr {
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      td {
+        &:first-child {
+          border-radius: 3px 0 0 3px;
+        }
+        &:last-child {
+          border-radius: 0 3px 3px 0;
+        }
+        border-top: none;
+        background-color: #F9FAFB;
+      }
+    }
+  }
+}

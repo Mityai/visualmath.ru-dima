@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "static",
+    "script": "bin/server.js",
+    "watch": false,
+    "merge_logs": true,
+    "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 8080,
+        "APIPORT": 3030
+    }
+  }]
+}

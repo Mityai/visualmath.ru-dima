@@ -1,0 +1,41 @@
+.select-element {
+  margin-bottom: 5px;
+  padding: 5px;
+  cursor: default;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.select-element-text {
+  background-color: #D0A283;
+  &:hover {
+    background-color: #F6D3BC;
+  }
+}
+
+.select-element-visual {
+  background-color: #C2B3F7;
+  &:hover {
+    background-color: #E7E1FE;
+  }
+}
+
+.select-element-question {
+  background-color: #FBADD2;
+  &:hover {
+    background-color: #FEDEEE;
+  }
+}
+
+.select-element-block {
+  background-color: #FFD8B0;
+  &:hover {
+    background-color: #FFEFDE;
+  }
+}
+
+.select-element-delete {
+  background-color: #FFFFFF;
+  &:hover {
+    background-color: #FFFFFF;
+  }
+}

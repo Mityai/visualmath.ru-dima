@@ -1,0 +1,57 @@
+@import "../../theme/variables.scss";
+
+.home {
+  dd {
+    margin-bottom: 15px;
+  }
+}
+.masthead {
+  background: black;
+  padding: 40px 20px;
+  color: white;
+  text-align: center;
+  .logo {
+    $size: 200px;
+    margin: auto;
+    height: $size;
+    width: 500px;
+    vertical-align: middle;
+    p {
+      line-height: $size;
+      margin: 0px;
+    }
+    img {
+      width: 75%;
+      margin: auto;
+    }
+  }
+  h1 {
+    color: $cyan;
+    font-size: 4em;
+  }
+  h2 {
+    color: #ddd;
+    font-size: 2em;
+    margin: 20px;
+  }
+  a {
+    color: #ddd;
+  }
+  p {
+    margin: 10px;
+  }
+  .humility {
+    color: $humility;
+    a {
+      color: $humility;
+    }
+  }
+  .github {
+    font-size: 1.5em;
+  }
+}
+
+.counterContainer {
+  text-align: center;
+  margin: 20px;
+}
