@@ -14,7 +14,7 @@ export let error = {
 }
 
 export let query = async ({body: {id, question, answers,
-  correctAnswers, multiple, difficulty}}) => {
+  correctAnswers, multiple}}) => {
   console.info('questions/edit')
   console.info(`id (${id})`)
   let ques = await Question.findOne({_id: id}).exec()
@@ -28,7 +28,6 @@ export let query = async ({body: {id, question, answers,
   questionSet(ques, 'answers', answers)
   questionSet(ques, 'correctAnswers', correctAnswers)
   questionSet(ques, 'multiple', multiple)
-  questionSet(ques, 'difficulty', difficulty)
 
   console.info('updating question')
   return await ques.save()

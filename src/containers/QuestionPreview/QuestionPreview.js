@@ -13,7 +13,7 @@ import {Question, EditQuestion} from 'components'
 import {moduleImageSave} from 'redux/modules/modules'
 import {getQuestionById, loadSingle, activateEditMode, editQuestion,
   editQuestionText, editAnswers, editCorrectAnswers,
-  editMultiple, editDifficulty, editImages} from 'redux/modules/questions'
+  editMultiple, editImages} from 'redux/modules/questions'
 import {STATUS_EDITING, STATUS_EDITING_SUCCESS, STATUS_EDITING_FAIL} from 'actions/questions'
 
 
@@ -32,7 +32,7 @@ import {STATUS_EDITING, STATUS_EDITING_SUCCESS, STATUS_EDITING_FAIL} from 'actio
     editingState: state.questions.editing,
   }),
   {activateEditMode, editQuestion, editQuestionText, editAnswers,
-    editCorrectAnswers, editMultiple, editDifficulty, moduleImageSave, editImages}
+    editCorrectAnswers, editMultiple, moduleImageSave, editImages}
 )
 export default class QuestionPreview extends Component {
   static propTypes = {
@@ -43,7 +43,6 @@ export default class QuestionPreview extends Component {
     editCorrectAnswers: PropTypes.func.isRequired,
     editMultiple: PropTypes.func.isRequired,
     editQuestion: PropTypes.func.isRequired,
-    editDifficulty: PropTypes.func.isRequired,
     editingState: PropTypes.object.isRequired,
     moduleImageSave: PropTypes.func.isRequired,
     editImages: PropTypes.func.isRequired,
@@ -107,7 +106,7 @@ export default class QuestionPreview extends Component {
   }
 
   editing() {
-    let {editQuestion, editQuestionText, editDifficulty, question, moduleImageSave, editImages} = this.props
+    let {editQuestion, editQuestionText, question, moduleImageSave, editImages} = this.props
 
     return (
       <div>
@@ -116,10 +115,6 @@ export default class QuestionPreview extends Component {
                       editQuestionText={questionText => editQuestionText(question._id, questionText)}
                       editAnswers={(value, id) => this.answersChange(value, id)}
                       editCorrectAnswers={(checked, id) => this.сorrectAnswersСhange(checked, id)}
-                      editDifficulty={(difficulty) => {
-                        console.log('edit in src/containers/QuestionPreview/QuestionPreview.js');
-                        editDifficulty(question._id, difficulty);
-                      }}
                       setAnswerSymbolic={(isAnswerSymbolic) => {
                         question.isAnswerSymbolic = isAnswerSymbolic;
                       }}
@@ -133,8 +128,7 @@ export default class QuestionPreview extends Component {
                           imagesLeft: question.imagesLeft,
                           imagesTop: question.imagesTop,
                           imagesScale: question.imagesScale,
-                          isAnswerSymbolic: question.isAnswerSymbolic,
-                          difficulty: question.difficulty})
+                          isAnswerSymbolic: question.isAnswerSymbolic})
                           .then(() => {
                             console.log(1)
                             this.setState({isEditing: false})

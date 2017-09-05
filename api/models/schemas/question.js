@@ -15,10 +15,6 @@ let QuestionSchema = new Schema({
     type: Boolean,
     required: true
   },
-  difficulty: {
-    type: Number,
-    required: true
-  },
   hidden: {
     type: Boolean,
     default: false

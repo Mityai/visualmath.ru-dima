@@ -19,7 +19,7 @@ export class Block extends Component {
               onChange={({target: {value}}) => this.props.setName(value)} />
           </div>
           <div style={{flex: 1, marginLeft: '5px'}}>
-            <h2 style={{marginTop: 0}}>{this.props.data.get('name')}</h2>
+            <h2 className="katexable" style={{marginTop: 0}}>{this.props.data.get('name')}</h2>
           </div>
         </div>
         {

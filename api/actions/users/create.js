@@ -1,11 +1,10 @@
 import {User} from '../../models/user'
 
-let create = ({ body: {login, password, access, institution, group}}) => {
+let create = ({ body: {login, password, institution, group}}) => {
   console.info('/user/create');
   console.info({
     login,
     password,
-    access,
     institution,
     group
   });
@@ -22,7 +21,7 @@ let create = ({ body: {login, password, access, institution, group}}) => {
           let user = new User({
             username: login,
             password: password,
-            role: access,
+            role: "student",
             university: institution,
             group: group
           });

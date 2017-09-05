@@ -32,16 +32,15 @@ export default class AddQuestion extends Component {
     imagesLeft: [],
     imagesTop: [],
     imagesScale: [],
-    isAnswerSymbolic: false,
-    difficulty: ''
+    isAnswerSymbolic: false
   };
 
   save() {
-    let {question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic, difficulty} = this.state;
+    let {question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic} = this.state;
     if (answers[answers.length - 1] === '') {
       answers.pop();
     }
-    this.props.addQuestion({question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic, difficulty})
+    this.props.addQuestion({question, answers, correctAnswers, multiple, images, imagesLeft, imagesTop, imagesScale, isAnswerSymbolic})
       .then(() => this.props.pushState('/addQuestionSuccess'));
   }
 
@@ -106,8 +105,7 @@ export default class AddQuestion extends Component {
       answers: this.state.answers,
       correctAnswers: this.state.correctAnswers,
       multiple: this.state.multiple,
-      isAnswerSymbolic: this.state.isAnswerSymbolic,
-      difficulty: this.state.difficulty
+      isAnswerSymbolic: this.state.isAnswerSymbolic
     }
 
     return (
@@ -119,12 +117,11 @@ export default class AddQuestion extends Component {
               question={question}
               editQuestionText={value => this.setState({question: value})}
               editAnswers={(value, id) => this.answerChange(value, id)}
-              editImages={({images, imagesLeft, imagesTop, imagesScale}) =>
+              editImages={({images, imagesLeft, imagesTop, imagesScale}) => 
                 this.setState({images, imagesLeft, imagesTop, imagesScale})}
               editCorrectAnswers={(checked, id) => this.editCorrectAnswers(checked, id)}
               upload={file => this.props.moduleImageSave(file)}
               setAnswerSymbolic={(isAnswerSymbolic) => this.setState({isAnswerSymbolic})}
-              editDifficulty={(difficulty) => this.setState({difficulty})}
               save={::this.save}
             />
           </Col>
